@@ -30,12 +30,12 @@ const Navbars = () => {
   return (
     <div>
       <nav className={styles.nav}>
-        <Row style={{ width: "100%" }}>
+        <Row className={styles.row}>
           <Col className={styles.logoCol} xs={6} md={3}>
             <h2>To-Do App</h2>
           </Col>
-          <Col></Col>
-          <Col className={styles.linksCol} xs={6} md={4}>
+          <Col />
+          <Col className={styles.linksCol} xs={5} md={4}>
             {count.nav === "logout" ? (
               <a onClick={logOut}>Logout</a>
             ) : count.nav === "signin" ? (

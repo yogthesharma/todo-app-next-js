@@ -35,7 +35,7 @@
 
 .data {
   width: 100%;
-  height: 4rem;
+  min-height: 6rem;
   display: flex;
   border-bottom: 1px solid black;
   margin: 10px 0;
@@ -45,4 +45,20 @@
 
 .data a {
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .profileDiv {
+    width: 100%;
+    margin-top: 0;
+    border-radius: unset;
+  }
+
+  .profileDiv input {
+    width: 100%;
+  }
+
+  .profileDiv button {
+    margin-top: 10px;
+  }
 }

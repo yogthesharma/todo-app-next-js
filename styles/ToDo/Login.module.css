@@ -58,3 +58,15 @@
   box-shadow: inset 0px 0px 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
 }
+
+@media screen and (max-width: 600px) {
+  .loginDiv {
+    width: 100%;
+    border: none;
+    margin-top: 0;
+    border-radius: unset;
+  }
+  .loginDiv div {
+    width: 90%;
+  }
+}
