@@ -1,0 +1,60 @@
+.loginDiv {
+  width: 705px;
+  height: 451px;
+  background: #0984c9;
+  margin: auto;
+  margin-top: 3em;
+  border: 2px solid #000000;
+  box-shadow: 0px 0px 9px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.loginDiv div {
+  width: 60%;
+}
+
+.loginDiv div input {
+  width: 100%;
+  height: 3em;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0 1rem;
+}
+
+.loginDiv div input:valid {
+  outline: none;
+}
+
+.loginDiv p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 123.19%;
+
+  /* or 31px */
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.loginDiv button {
+  position: relative;
+
+  width: 162px;
+  height: 63px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  color: #007ec4;
+  line-height: 123.19%;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: inset 0px 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}

@@ -1,16 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/ToDo/Login.module.css";
 import { useRouter } from "next/router";
 import { userDispatch } from "../lib/Context";
-// firebase config
 import Fire from "../configs/firebase";
 
-export default function Home() {
-  const dispatch = userDispatch();
+const Signup = () => {
   const router = useRouter();
+  const dispatch = userDispatch();
+
   const initVals = {
     email: "",
     password: "",
+    confirmPassword: "",
   };
   const [values, setValues] = useState(initVals);
 
@@ -23,22 +24,32 @@ export default function Home() {
   };
 
   const btnClick = async () => {
+    if (values.password !== values.confirmPassword)
+      return alert("Password Not Confirmed!!");
+    if (!values.email || !values.password || !values.confirmPassword)
+      return alert("Fill All The Fields");
+
     await Fire.auth()
-      .signInWithEmailAndPassword(values.email, values.password)
+      .createUserWithEmailAndPassword(values.email, values.password)
       .then(async (res) => {
-        await router.push("/profile", `/${values.email}`);
+        Fire.firestore()
+          .collection("to-do-user")
+          .add({
+            email: values.email,
+          })
+          .then(async (res) => {
+            await router.push("/[profile]", `/${values.email}`);
+          })
+          .catch((e) => alert(e.message));
       })
-      .catch((e) => {
-        alert(e.message);
-        return;
-      });
+      .catch((e) => alert(e.message));
   };
-  //
+
   useEffect(() => {
     const setNav = async () => {
       await dispatch({
         type: "NavType",
-        payload: "signin",
+        payload: "login",
       });
     };
     setNav();
@@ -65,8 +76,19 @@ export default function Home() {
             onChange={handleChange}
           />
         </div>
-        <button onClick={btnClick}>Login</button>
+        <div>
+          <p>Confirm Password</p>
+          <input
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            value={values.confirmPassword}
+            onChange={handleChange}
+          />
+        </div>
+        <button onClick={btnClick}>Signup</button>
       </div>
     </>
   );
-}
+};
+
+export default Signup;
